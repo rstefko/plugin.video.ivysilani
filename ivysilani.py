@@ -4,6 +4,7 @@
 """Wrapper pro iVysílání České televize
 """
 
+import xbmc
 import httplib
 import time
 import urllib
@@ -340,7 +341,10 @@ def _https_ceska_televize_fetch(url, params):
             data = response.read()
         conn.close()
         return data
-    return None
+    else:
+        xbmc.log(url)
+        xbmc.log(response.read())
+        return None
 
 
 _token = None
